@@ -7,12 +7,14 @@
 <div class="container">
   <div class="row">
     <div class="span9">
-      <iframe width=100% height="400" src="//www.youtube.com/embed/FfBKqaVk2Co" frameborder="0" allowfullscreen></iframe>
+      <iframe width=100% height="400" src="//www.youtube.com/embed/<%= @youtube_id %>" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="span3 sidepanel">
-      <h1>The 1975</h1>
-      <h5>Chocolate</h5>
-      <%= @artist %>
+      <h1><%= @artist %></h1>
+      <h1><%= @youtube_url_array %></h1>
+      <h1><%= @youtube_id %></h1>
+
+      <h5><%= @title %></h5>
       hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello
     </div>
   </div>

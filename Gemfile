@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# # Use sqlite3 as the database for Active Record
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+## ****************** added by kim ******************
+
 # Twitter Bootstrap
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -41,10 +43,13 @@ gem 'twitter-bootstrap-rails', '~> 2.2.8'
 gem 'lastfm', '~> 1.24.0'
 
 # debugger
-gem 'debugger'
+gem 'debugger', group: [:development, :test]
 
-#json
+# json REST
 gem 'httparty', '~> 0.13.0'
+
+# sqlite not supported by heroku
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -54,6 +59,3 @@ gem 'httparty', '~> 0.13.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

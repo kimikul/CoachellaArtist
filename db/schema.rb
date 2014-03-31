@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140330214012) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "lineups", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

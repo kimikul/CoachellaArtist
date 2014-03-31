@@ -38,3 +38,9 @@ html, body {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.text-muted {
+  color: gray;
+  font-size: 80%;
+  line-height: 150%;
+}

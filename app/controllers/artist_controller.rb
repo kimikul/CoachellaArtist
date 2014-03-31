@@ -30,7 +30,7 @@ class ArtistController < ApplicationController
   # ******************** find top track with youtube vid ********************
   def youtube_id_from_top_tracks(top_tracks)
     rand = rand(0..(top_tracks.count-1))
-      rand_track = top_tracks[rand]
+      rand_track = top_tracks.delete_at(rand)
       rand_track_url = rand_track["url"]
       @title = rand_track["name"]
 
@@ -40,8 +40,10 @@ class ArtistController < ApplicationController
       if youtube_url_array.count > 0
         youtube_url_subarray = youtube_url_array.first
         @youtube_id = youtube_url_subarray.first
-      else
+      elsif top_tracks.count > 0
         youtube_id_from_top_tracks(top_tracks)
+      else
+        top_tracks_for_random_artist
       end
   end
 end

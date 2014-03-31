@@ -23,10 +23,10 @@ html, body {
 }
 
 .title-div {
-  padding-top: 30px;
-  padding-bottom: 30px;
-   color: transparent;
-   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
   }
 
 .title-div h1 {

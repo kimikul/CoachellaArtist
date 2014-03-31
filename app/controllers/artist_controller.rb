@@ -2,6 +2,8 @@ class ArtistController < ApplicationController
   include HTTParty
   base_uri 'http://ws.audioscrobbler.com'
 
+
+  # ******************** show youtube vid for random coachella artist ********************
   def index
     top_tracks = top_tracks_for_random_artist
     youtube_id_from_top_tracks(top_tracks)

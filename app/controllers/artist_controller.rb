@@ -43,7 +43,7 @@ class ArtistController < ApplicationController
       elsif top_tracks.count > 0
         youtube_id_from_top_tracks(top_tracks)
       else
-        top_tracks_for_random_artist
+        index
       end
   end
 end

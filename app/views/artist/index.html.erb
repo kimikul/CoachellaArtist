@@ -11,7 +11,7 @@
       <h1><%= @artist %><BR><small><%= @title %></small></h1>
       <BR><BR><BR><BR>
       <p>
-        <%= button_to "Give me more from #{@artist}", artist_path, :data => { :artist => @artist }, :class => "btn btn-large btn-primary btn-block", :method => :get %>
+        <%= button_to "Give me more from #{@artist}", artist_path(:artist => @artist), :data => { :artist => @artist }, :class => "btn btn-large btn-primary btn-block", :method => :get %>
         <%= button_to "Give me a different artist", artist_path, :class => "btn btn-large btn-primary btn-block", :method => :get %>
       </p>
     </div>

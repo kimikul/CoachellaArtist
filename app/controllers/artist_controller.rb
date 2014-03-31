@@ -5,14 +5,15 @@ class ArtistController < ApplicationController
 
   # ******************** show youtube vid for random coachella artist ********************
   def index
-    top_tracks = top_tracks_for_random_artist
+    artist = params[:artist]
+    top_tracks = top_tracks_for_random_artist(artist)
     youtube_id_from_top_tracks(top_tracks)
   end
 
 
   # ******************** find artist with top tracks ********************
-  def top_tracks_for_random_artist
-    @artist = Lineup.select_random_artist
+  def top_tracks_for_random_artist(artist)
+    @artist = artist ? artist : Lineup.select_random_artist
 
     options = { :query => { :api_key => "df544bd3192bb4c623ccd5fc1e433f6a", :limit => "10", :format => "json" } }
     top_tracks_response = self.class.get("/2.0/?method=artist.gettoptracks&artist=#{ERB::Util.url_encode(@artist)}",options)

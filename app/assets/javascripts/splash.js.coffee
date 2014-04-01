@@ -2,32 +2,24 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+fetch_new_video = (e) ->
+  e.preventDefault()
+
+  $.ajax (
+    url: "/artist/index"
+    dataType: "html"
+    success: (data) ->
+      console.log("hello" + data)
+      $(".container").html(data)
+
+    error: (data) ->
+      console.log(data)
+  )
+
 $ ->
   $("#record-link").click (e) ->
-    e.preventDefault()
     $(this).find("img").addClass("spin")
-
-    $.ajax (
-      url: "/artist/index"
-      dataType: "html"
-      success: (data) ->
-        console.log("hello" + data)
-        $(".container").html(data)
-
-      error: (data) ->
-        console.log(data)
-    )
+    fetch_new_video(e)
 
   $(document).on "click", "#new-artist-button", (e) ->
-    console.log("alksdjf;alksjdla")
-    e.preventDefault()
-    $.ajax
-      url: "/artist/index"
-      dataType: "html"
-      success: (data) ->
-        console.log("hello" + data)
-        $(".container").html(data)
-
-      error: (data) ->
-        console.log(data)
-
+    fetch_new_video(e)

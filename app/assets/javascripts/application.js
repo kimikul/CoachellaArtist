@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$ ->
+  $("#new-artist-button").submit ->
+    e.preventDefault()
+    alert("hi")
+    console.log("hihi from splash js coffee")

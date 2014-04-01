@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  background: linear-gradient(#99CCFF, #FFCCCC, #FFFFFF); /* Standard syntax */
-}
-
-.title-div {
-   padding-top: 50px;
-   color: transparent;
-   text-shadow: 0 0 5px rgba(0,0,0,0.5);
-   // text-shadow: 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white;
-  }
-
-.title-div h1 {
-  font-size: 350%;
+.sidepanel h1 {
+  margin-top: 0px;
 }

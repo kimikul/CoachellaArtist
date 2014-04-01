@@ -33,12 +33,6 @@ html, body {
   font-size: 350%;
 }
 
-.btn {
-  white-space: normal;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .text-muted {
   color: gray;
   font-size: 80%;

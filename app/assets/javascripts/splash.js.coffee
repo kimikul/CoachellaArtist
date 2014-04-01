@@ -18,8 +18,16 @@ $ ->
         console.log(data)
     )
 
+  $(document).on "click", "#new-artist-button", (e) ->
+    console.log("alksdjf;alksjdla")
+    e.preventDefault()
+    $.ajax
+      url: "/artist/index"
+      dataType: "html"
+      success: (data) ->
+        console.log("hello" + data)
+        $(".container").html(data)
 
-    $("#new-artist-button").on click: ->
-      e.preventDefault()
-      console.log("hihi from splash js coffee")
+      error: (data) ->
+        console.log(data)
 

@@ -8,7 +8,7 @@
       <BR><BR>
       <p>
         <%= button_to "Give me more from #{@artist}", artist_path(:artist => @artist), :data => { :artist => @artist }, :class => "btn btn-large btn-primary btn-block", :method => :get %>
-        <%= button_to "Give me a different artist", "#", :id => "new-artist-button", :class => "btn btn-large btn-primary btn-block" %>
+        <%= button_to "Give me a different artist", "#", :id => "new-artist-button", :class => "btn btn-large btn-primary btn-block", :method => :get %>
       </p>
     </div>
   </div>

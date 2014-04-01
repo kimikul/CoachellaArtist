@@ -2,11 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-fetch_new_video = (e) ->
-  e.preventDefault()
-
+fetch_new_video = (url) ->
   $.ajax (
-    url: "/artist/index"
+    url: url
     dataType: "html"
     success: (data) ->
       console.log("hello" + data)
@@ -18,8 +16,14 @@ fetch_new_video = (e) ->
 
 $ ->
   $("#record-link").click (e) ->
+    e.preventDefault()
     $(this).find("img").addClass("spin")
-    fetch_new_video(e)
+    fetch_new_video($(this).attr("href"))
 
   $(document).on "click", "#new-artist-button", (e) ->
-    fetch_new_video(e)
+    e.preventDefault()
+    fetch_new_video($(this).attr("href"))
+
+  $(document).on "click", "#same-artist-button", (e) ->
+    e.preventDefault()
+    fetch_new_video($(this).attr("href"))

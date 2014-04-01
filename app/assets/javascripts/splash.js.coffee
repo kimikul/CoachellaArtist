@@ -2,6 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
- $("#alert").click ->
-  alert("hi");
-  return;
+$ ->
+  $("#record-link").click (e) ->
+    e.preventDefault()
+    $(this).find("img").addClass("spin")
+
+    $.ajax (
+      url: "/artist/index"
+      dataType: "html"
+      success: (data) ->
+        console.log("hello" + data)
+        $(".container").html(data)
+
+      error: (data) ->
+        console.log(data)
+    )

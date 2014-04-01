@@ -1,13 +1,17 @@
 class ArtistController < ApplicationController
   include HTTParty
   base_uri 'http://ws.audioscrobbler.com'
-
+  respond_to :js
 
   # ******************** show youtube vid for random coachella artist ********************
   def index
     artist = params[:artist]
     top_tracks = top_tracks_for_random_artist(artist)
     youtube_id_from_top_tracks(top_tracks)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
 

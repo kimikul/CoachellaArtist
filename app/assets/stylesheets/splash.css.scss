@@ -2,19 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  // background: linear-gradient(#99CCFF, #FFCCCC); /* Standard syntax */
-}
-
-.navbar {
-    // background: linear-gradient(#99CCFF, #FFCCCC); /* Standard syntax */
-}
-
-.sidepanel {
-  // background: linear-gradient(red, blue); /* Standard syntax */
-}
-
 .record-image:hover {
   width: 510px;
   height: 510px;
+}
+
+.spin {
+  -webkit-animation: spin 4s infinite linear;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

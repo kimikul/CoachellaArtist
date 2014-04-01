@@ -1,4 +1,4 @@
-<div class="container" width=100% height=100%>
+<div>
   <div class="row">
     <div class="span9">
       <iframe width=100% height="400" src="//www.youtube.com/embed/<%= @youtube_id %>" frameborder="0" allowfullscreen></iframe>
@@ -8,7 +8,8 @@
       <BR><BR>
       <p>
         <%= button_to "Give me more from #{@artist}", artist_path(:artist => @artist), :data => { :artist => @artist }, :class => "btn btn-large btn-primary btn-block", :method => :get %>
-        <%= button_to "Give me a different artist", artist_path, :class => "btn btn-large btn-primary btn-block", :method => :get %>
+<!--         <%= button_to "Give me a different artist", "#", :id => "new-artist-button", :remote => true, :class => "btn btn-large btn-primary btn-block", :method => :get %> -->
+        <%= link_to "give me a different artist", "#", :id => "new-artist-button" %>
       </p>
     </div>
   </div>

@@ -44,3 +44,24 @@ html, body {
   font-size: 80%;
   line-height: 150%;
 }
+
+.social-media {
+  vertical-align: top;
+  text-align: center;
+  height: 100px;
+}
+
+.fb-like {
+  padding-bottom: 5px;
+}
+
+#tweet-share {
+  vertical-align: top;
+  display:inline-block;
+  margin-right: -20px;
+}
+
+#facebook-share {
+  vertical-align:top;
+  display:inline-block;
+}

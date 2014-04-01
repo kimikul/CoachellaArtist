@@ -17,3 +17,9 @@ $ ->
       error: (data) ->
         console.log(data)
     )
+
+
+    $("#new-artist-button").on click: ->
+      e.preventDefault()
+      console.log("hihi from splash js coffee")
+

@@ -1,13 +1,13 @@
 <div>
   <div class="row">
     <div class="span9">
-      <iframe width=100% height="400" src="//www.youtube.com/embed/<%= @youtube_id %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+      <iframe width=100% height="400" src="//www.youtube.com/embed/<%= @song.youtube_id %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="span3 sidepanel">
-      <h1><%= @artist %><BR><small><%= @title %></small></h1>
+      <h1><%= @song.artist %><BR><small><%= @song.title %></small></h1>
       <BR><BR>
       <p>
-        <%= link_to "Give me more from #{@artist}", artist_path(:artist => @artist), :id => "same-artist-button", :class => "btn btn-large btn-primary btn-block" %>
+        <%= link_to "Give me more from #{@song.artist}", artist_path(:artist => @song.artist), :id => "same-artist-button", :class => "btn btn-large btn-primary btn-block" %>
         <%= link_to "Give me a different artist", artist_path, :id => "new-artist-button", :class => "btn btn-large btn-primary btn-block" %>
       </p>
     </div>

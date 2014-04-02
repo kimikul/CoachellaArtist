@@ -5,10 +5,19 @@ class Song
   LASTFM_API_KEY = "df544bd3192bb4c623ccd5fc1e433f6a"
 
   attr_accessor :artist
+  attr_accessor :title
+  attr_accessor :youtube_id
 
   def initialize(artist = nil)
     @artist = artist
   end
+
+
+  def get_random_song
+    top_tracks = top_tracks_for_random_artist
+    @youtube_id = youtube_id_from_top_tracks(top_tracks)
+  end
+
 
   # ******************** find artist with top tracks ********************
   def top_tracks_for_random_artist

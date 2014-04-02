@@ -48,7 +48,13 @@ gem 'debugger', group: [:development, :test]
 gem 'httparty', '~> 0.13.0'
 
 # sqlite not supported by heroku
-gem 'pg'
+group :development, :test do
+  gem 'pg'
+end
+
+group :production do
+  gem 'sqlite3'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

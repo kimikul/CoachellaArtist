@@ -23,10 +23,12 @@ $ ->
     $(this).find("img").addClass("spin")
     fetch_new_video($(this).attr("href"))
 
+
   $(document).on "click", "#new-artist-button", (e) ->
     mixpanel.track "fetch_song", { "source" : "new-artist-button" }
     e.preventDefault()
     fetch_new_video($(this).attr("href"))
+
 
   $(document).on "click", "#same-artist-button", (e) ->
     artistURL = $(this).attr("href")

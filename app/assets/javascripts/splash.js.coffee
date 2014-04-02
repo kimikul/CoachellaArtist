@@ -15,15 +15,20 @@ fetch_new_video = (url) ->
   )
 
 $ ->
+  mixpanel.track "load_page"
+
   $("#record-link").click (e) ->
+    mixpanel.track "fetch_song", { "source" : "record-click" }
     e.preventDefault()
     $(this).find("img").addClass("spin")
     fetch_new_video($(this).attr("href"))
 
   $(document).on "click", "#new-artist-button", (e) ->
+    mixpanel.track "fetch_song", { "source" : "new-artist-button" }
     e.preventDefault()
     fetch_new_video($(this).attr("href"))
 
   $(document).on "click", "#same-artist-button", (e) ->
+    mixpanel.track "fetch_song", { "source" : "same-artist-button" }
     e.preventDefault()
     fetch_new_video($(this).attr("href"))

@@ -53,3 +53,7 @@ html, body {
   vertical-align:top;
   display:inline-block;
 }
+
+#facebook-share {
+  overflow:auto;
+}

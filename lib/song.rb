@@ -1,25 +1,26 @@
 class Song
   include HTTParty
+
   base_uri 'http://ws.audioscrobbler.com'
 
   LASTFM_API_KEY = "df544bd3192bb4c623ccd5fc1e433f6a"
 
   attr_accessor :artist
   attr_accessor :title
-  attr_accessor :youtube_id
+  attr_accessor :video_url
 
-  def initialize(artist = nil)
+  def initialize(artist)
     @artist = artist
   end
 
-
-  def get_random_song
-    top_tracks = top_tracks_for_random_artist
-    @youtube_id = youtube_id_from_top_tracks(top_tracks)
+  def fetch_video
+    while @video_url.nil?
+      top_tracks = top_tracks_for_random_artist
+      fetch_video_from_top_tracks(top_tracks)
+    end
   end
 
-
-  # ******************** find artist with top tracks ********************
+  # ******************** find top tracks for specific or random artist ********************
   def top_tracks_for_random_artist
     unless @artist
       @artist = Lineup.select_random_artist
@@ -38,25 +39,25 @@ class Song
   end
 
 
-  # ******************** find top track with youtube vid ********************
-  def youtube_id_from_top_tracks(top_tracks)
+  # ******************** find track with video ********************
+  def fetch_video_from_top_tracks(top_tracks)
     rand = rand(0..(top_tracks.count-1))
-      rand_track = top_tracks.delete_at(rand)
-      rand_track_url = rand_track["url"]
-      @title = rand_track["name"]
+    top_track = top_tracks.delete_at(rand)
+    top_track_url = top_track["url"]
+    html = self.class.get(top_track_url)
+    youtube_urls = html.scan(/embed src=\"http:\/\/www.youtube.com\/v\/([-\w\.]+)?/)
+    vevo_urls = html.scan(/data-video-id=\"([\w]+)?\"/)
 
-      html = self.class.get(rand_track_url)
-      youtube_url_array = html.scan(/embed src=\"http:\/\/www.youtube.com\/v\/([-\w\.]+)?/)
-
-      if youtube_url_array.count > 0
-        youtube_url_subarray = youtube_url_array.first
-        @youtube_id = youtube_url_subarray.first
-      elsif top_tracks.count > 0
-        youtube_id_from_top_tracks(top_tracks)
-      else
-        index
-      end
+    if youtube_urls.count > 0
+      @title = top_track["name"]
+      youtube_id = youtube_urls.first.first
+      @video_url = "http://www.youtube.com/embed/" + youtube_id + "?autoplay=1"
+    elsif vevo_urls.count > 0
+      @title = top_track["name"]
+      vevo_id = vevo_urls.first.first
+      @video_url = "http://cache.vevo.com/m/html/embed.html?video=" + vevo_id + "&autoplay=1"
+    elsif top_tracks.count > 0
+      fetch_video_from_top_tracks(top_tracks)
+    end
   end
-
-
 end

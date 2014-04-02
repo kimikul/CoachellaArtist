@@ -6,7 +6,7 @@ class ArtistController < ApplicationController
     artist = params[:artist]
 
     @song = Song.new(artist)
-    @song.get_random_song
+    @song.fetch_video
 
     respond_to do |format|
       format.js

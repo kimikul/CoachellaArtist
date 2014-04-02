@@ -29,6 +29,11 @@ $ ->
     fetch_new_video($(this).attr("href"))
 
   $(document).on "click", "#same-artist-button", (e) ->
+    artistURL = $(this).attr("href")
+    artistName = artistURL.replace "/artist/index?artist=", ""
+
     mixpanel.track "fetch_song", { "source" : "same-artist-button" }
+    mixpanel.track "liked_artist", { "artist" : artistName }
+
     e.preventDefault()
     fetch_new_video($(this).attr("href"))

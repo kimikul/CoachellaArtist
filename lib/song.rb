@@ -13,15 +13,18 @@ class Song
     @artist = artist
   end
 
+
+  # ******************** get a damn video ********************
   def fetch_video
     while @video_url.nil?
-      top_tracks = top_tracks_for_random_artist
+      top_tracks = top_tracks_for_artist
       fetch_video_from_top_tracks(top_tracks)
     end
   end
 
+
   # ******************** find top tracks for specific or random artist ********************
-  def top_tracks_for_random_artist
+  def top_tracks_for_artist
     unless @artist
       @artist = Lineup.select_random_artist
     end
@@ -45,19 +48,27 @@ class Song
     top_track = top_tracks.delete_at(rand)
     top_track_url = top_track["url"]
     html = self.class.get(top_track_url)
+
+    @title = top_track["name"]
+    @video_url = find_video_url_in_html(html)
+
+    if @video_url.nil? && top_tracks.count > 0
+      fetch_video_from_top_tracks(top_tracks)
+    end
+  end
+
+
+  def find_video_url_in_html(html)
     youtube_urls = html.scan(/embed src=\"http:\/\/www.youtube.com\/v\/([-\w\.]+)?/)
     vevo_urls = html.scan(/data-video-id=\"([\w]+)?\"/)
 
     if youtube_urls.count > 0
-      @title = top_track["name"]
       youtube_id = youtube_urls.first.first
-      @video_url = "http://www.youtube.com/embed/" + youtube_id + "?autoplay=1"
+      "http://www.youtube.com/embed/#{youtube_id}?autoplay=1"
     elsif vevo_urls.count > 0
-      @title = top_track["name"]
       vevo_id = vevo_urls.first.first
-      @video_url = "http://cache.vevo.com/m/html/embed.html?video=" + vevo_id + "&autoplay=1"
-    elsif top_tracks.count > 0
-      fetch_video_from_top_tracks(top_tracks)
+      "http://cache.vevo.com/m/html/embed.html?video=#{vevo_id}&autoplay=1"
     end
   end
+
 end

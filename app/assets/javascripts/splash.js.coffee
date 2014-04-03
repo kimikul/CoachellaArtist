@@ -7,9 +7,7 @@ fetch_new_video = (url) ->
     url: url
     dataType: "html"
     success: (data) ->
-      console.log("hello" + data)
       $(".container").html(data)
-
     error: (data) ->
       console.log(data)
   )

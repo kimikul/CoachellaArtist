@@ -54,6 +54,8 @@ class Song
 
     if @video_url.nil? && top_tracks.count > 0
       fetch_video_from_top_tracks(top_tracks)
+    else
+      @artist = nil
     end
   end
 

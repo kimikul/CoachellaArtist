@@ -1,25 +1,24 @@
 require 'spec_helper'
 
 describe Lineup do
-  it { should respond_to(:all_artists) }
+
+  let(:all_artists) { Lineup.all_artists }
 
   describe ".all_artists" do
     it "should have a lineup of many artists" do
-      artists = Lineup.all_artists
-      artists.count.should > 0
+      all_artists.count.should > 0
     end
   end
 
   describe ".select_random_artist" do
+    before { @artist = Lineup.select_random_artist }
+
     it "should select a valid random artist" do
-      artist = Lineup.select_random_artist
-      artist.should_not be_nil
+      @artist.should_not be_nil
     end
 
     it "should be part of the lineup" do
-      artist = Lineup.select_random_artist
-      artists = Lineup.all_artists
-      artists.should include(artist)
+      all_artists.should include(@artist)
     end
   end
 end

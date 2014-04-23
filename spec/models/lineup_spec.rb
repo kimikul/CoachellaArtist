@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Lineup do
+  it { should respond_to(:all_artists) }
+
   describe ".all_artists" do
     it "should have a lineup of many artists" do
       artists = Lineup.all_artists

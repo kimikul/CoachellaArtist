@@ -4,7 +4,6 @@ class ArtistController < ApplicationController
   # ******************** show youtube vid for random coachella artist ********************
   def index
     artist = params[:artist]
-
     @song = Song.new(artist)
     @song.fetch_video
 

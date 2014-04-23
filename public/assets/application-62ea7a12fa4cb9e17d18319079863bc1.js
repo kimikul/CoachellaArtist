@@ -13105,7 +13105,6 @@ mixpanel.init("903ab32bf460e5dc3826656ae3ae51a9");
         "source": "new-artist-button"
       });
       e.preventDefault();
-      debugger;
       return fetch_new_video($(this).attr("href"));
     });
     return $(document).on("click", "#same-artist-button", function(e) {

@@ -31,7 +31,6 @@ class Song
 
     options = { :query => { :api_key => LASTFM_API_KEY, :limit => "10", :format => "json" } }
     top_tracks_response = self.class.get("/2.0/?method=artist.gettoptracks&artist=#{ERB::Util.url_encode(@artist)}",options)
-
     top_tracks_response = top_tracks_response.try(:[],"toptracks").try(:[],"track")
     if top_tracks_response
       top_tracks_response
